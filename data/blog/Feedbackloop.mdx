@@ -1,0 +1,103 @@
+---
+title: Buzzer System
+date: '2022-03-01'
+tags: ['intermediate', 'guide', 'sensors']
+draft: false
+summary: ' In the article, you will create a system that uses the ultrasonic sensor and a buzzer to make a sound if it gets too close to an object. '
+authors: ['default']
+---
+
+In the article, you will create a system that uses the ultrasonic sensor and a buzzer to make a sound if it gets too close to an object. You will also learn the basics of a sensor feedback loop.
+
+The feedback loop allows the computer to be “aware” of its surroundings by sensing its environment and reacting accordingly. An example, if a simple feedback loop is a thermostat. If the thermostat detects the house is getting too cold it will turn on the heater until the house gets to a set temperature.
+
+In this case, you can see three aspects of the simple feedback loop: the sensor (temperature sensor), control unit (computer inside the thermostat), and effectors/methods of communication (heater). The temperature sensor sensed the house was too cold then sent a signal to the computer to raise the temperature and the computer turned on the heater until it got to a set temperature.
+![Important Ports](/static/images/Article4/img1.png)
+
+## Materials
+
+| Item Name              | Amount |
+| ---------------------- | ------ |
+| Arduino Uno            | 1      |
+| Ultrasonic Rangefinder | 1      |
+| BreadBoard             | 1      |
+| Wires                  | 6      |
+| Buzzer                 | 1      |
+
+- Arduino Uno
+
+![Important Ports](/static/images/Article4/img2.png)
+
+- Ultrasonic Rangefinder
+
+![Important Ports](/static/images/Article4/img3.png)
+
+- Breadboard
+
+![Important Ports](/static/images/Article4/img4.png)
+
+- Wires
+
+![Important Ports](/static/images/Article4/img6.png)
+
+- Buzzer
+
+![Important Ports](/static/images/Article4/img5.png)
+
+## Setup
+
+Step 1:
+![Important Ports](/static/images/Article4/img7.png)
+
+Step 2:
+![Important Ports](/static/images/Article4/img8.png)
+
+## Code
+
+```ino:blinkandbutton.ino
+
+// Define the pin numbers
+#define trigPin 8
+#define echoPin 9
+#define buzzer 10
+
+// intiating the variables needed
+long duration;
+float distanceInch;
+int timer;
+
+// the setup function runs once when the code is run
+void setup() {
+//setting the trigPin and echoPin for ultrasonic rangefinder and buzzer pin
+pinMode(trigPin, OUTPUT);
+pinMode(echoPin, INPUT);
+pinMode(buzzer, OUTPUT);
+}
+
+//the loop runs continually once the code is run
+//The loop continually obtains data from the utrasonic sensor and adjusts
+//  the pulse strenght of the buzzer based on the distnce
+void loop() {
+digitalWrite(trigPin, LOW);
+delayMicroseconds(2);
+digitalWrite(trigPin, HIGH);
+delayMicroseconds(10);
+digitalWrite(trigPin, LOW);
+
+duration = pulseIn(echoPin, HIGH);
+// measuringthe time taken to hear the pulse back from range finder
+
+distanceInch = duration * 0.0133 /2;
+// calculating distance using the speed of sound in air
+
+digitalWrite(buzzer, HIGH);
+delay(50);
+digitalWrite(buzzer, LOW);
+
+timer = distanceInch * 10;
+// change pulse speed based on distance
+
+delay(timer);
+
+}
+```

@@ -1,0 +1,85 @@
+---
+title: Turn On an LED with a Button
+date: '2022-02-15'
+tags: ['beginner', 'guide']
+draft: false
+summary: 'In this article, you will learn how to turn on the built-in LED on the Arduino UNO. '
+authors: ['default']
+---
+
+In this article, you will learn how to turn on the built-in LED on the Arduino UNO.
+
+## Materials:
+
+| Name        | Amount |
+| ----------- | ------ |
+| Arduino Uno | 1      |
+| Button      | 1      |
+| BreadBoard  | 1      |
+| Wires       | 2      |
+
+- Arduino Uno
+
+![Important Ports](/static/images/Article3/img4.png)
+
+- Button
+
+![Important Ports](/static/images/Article3/img3.png)
+
+- BreadBoard
+
+![Important Ports](/static/images/Article3/img2.png)
+
+- Wires
+
+![Important Ports](/static/images/Article3/img1.png)
+
+## SetUp:
+
+![Important Ports](/static/images/Article3/img5.png)
+
+## Code Description:
+
+In the setup function, we initialize the built-in LED to be an output since our code will send a “HIGH” or “LOW” signal to the LED to turn it on or off, respectively. Next, on line 16 the button is initialized as an input since we want the input of a button press to turn the LED on or off.
+
+## Final Result:
+
+When you press the button, the LED on the board should turn on. The LED should then turn off when you let go of the button. If it does not do this, recheck your wiring and code!
+
+## Code:
+
+```ino:blinkandbutton.ino
+#define ACTIVATED LOW
+
+const int button_pin = 2;
+
+int button_state = 0;
+
+// the setup function runs once when you press reset or power the board
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT); // initialize digital pin LED_BUILTIN as an output.
+  pinMode(button_pin, INPUT); // initialize digital pin "button_pin" as an input.
+  digitalWrite(button_pin, HIGH);
+
+}
+
+// the loop function runs over and over again forever
+void loop() {
+
+  button_state = digitalRead(button_pin);
+
+  if(button_state == HIGH ){
+        // if button is pressed...
+
+       digitalWrite(LED_BUILTIN, LOW);
+
+  }else{
+       //if button is not pressed...
+
+      digitalWrite(LED_BUILTIN, HIGH);
+
+
+  }
+
+}
+```

@@ -1,0 +1,50 @@
+---
+title: Basics of Arduino Hardware
+date: '2022-02-01'
+tags: ['beginner', 'guide']
+draft: false
+summary: 'Arduinos are microcontrollers that can connect to different peripherals (motors, screens, etc) and sensors (accelerometers, gyroscopes, temperature sensors, etc)  and can run programs to create circuits. '
+authors: ['default']
+---
+
+Arduinos are microcontrollers that can connect to different peripherals (motors, screens, etc) and sensors (accelerometers, gyroscopes, temperature sensors, etc) and can run programs to create circuits.
+
+## Important Ports:
+
+![Important Ports](/static/images/Article2/img1.png)
+
+**Microcontroller (Pink):**
+
+- Small computer that can run simple programs
+
+**USB Type-B Port (Teal):**
+
+- Port to power the board and upload code to the board
+
+**Barrel Jack (Purple):**
+
+- Port to power the board using a 9 Volt power source
+
+**Reboot Button (Yellow):**
+
+- Reboot button to restart the code running
+
+## Arduino Pins:
+
+Arduino Pins allow you to connect sensors and other peripherals.
+
+The tx and rx digital pins stand for transmission and receiving and are used to communicate with devices that Universal Asynchronous Receiver Transmitter protocol.
+
+Pins 2 to 13 can be used as an input or output to send binary signals when connected to sensors, motors, screens, etc. The “~” next to a pin indicates that it can also output analog information.
+
+![Pins 2 to 13](/static/images/Article2/img2.png)
+
+In the power pins, the reset pin functions similar to the reset button. The 3.3V and 5V pins output 3.3 and 5 Volts respectively; these pins are especially important since they provide the rest of the electronics in a circuit with power. The GND pin ground can be used to ground the circuit. Finally, the Vin pin can be used to obtain 6 to 9 Volts similar to the barrel jack.
+
+The analog in pins are used to input analog information. These pins are used with sensors like temperature sensors and potentiometers (sensors that measure rotation).
+
+![Analog Pins](/static/images/Article2/img3.png)
+
+As you begin working on more projects and familiarize yourself with the board, these pins and their usages will begin to make more sense. Don’t be intimidated if they don’t make sense right now!
+
+Sources: Image of Arduino Uno from eegloo.com
